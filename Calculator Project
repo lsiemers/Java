@@ -1,0 +1,75 @@
+/*
+ * Project Name: Calculator
+ * Description: Calculator for One time use, Allows the user to make a selection on the screen. The user enters two integers and gets the result as a double
+ * Student Name: Lukas Siemers
+ * Date: 9/18/2023
+ * */
+import java.util.Scanner;
+public class Project1 {
+    public static void main(String[] args) {
+        System.out.println("Welcome to Baoqiang Yan's simple calculator!");
+        System.out.println("Please enter one of the following numeric options:");
+        System.out.println("1 - Add");
+        System.out.println("2 - Sub");
+        System.out.println("3 - Mul");
+        System.out.println("4 - Div");
+        System.out.println("0 - Quit");
+
+        Scanner scanner = new Scanner(System.in);   //Assigning the scanner to a variable
+        int option;                                 // Declaring option as an variable for input
+        option = scanner.nextInt();                 //scanner is getting assigned to the Option variable
+        if (option > 4){                            // If the option is greater than 4 then print Message
+            System.out.println("Invalid Option");
+        }
+        int num1;                                 //Declaring num 1 for multiple uses
+        int num2;                                 //Declaring num 2 for multiple uses
+        double result;                              //Declaring result for calculations results
+
+        switch(option){                            // Switch Statements with options as input
+            case 1:                                 // Addition if user picks this number (1)
+                System.out.println("Enter two numbers for Addition (seperated by Space)");
+                num1 = scanner.nextInt();                                   //Selecting the first entered number
+                num2 = scanner.nextInt();                                   //Selecting the second entered number
+                result = (double) num1+num2;                                //Converting the result into double
+                System.out.println("The result is: " + result);
+                System.out.println("Thanks for using my calculator!");  //Goodbye Text
+                break;
+
+            case 2:                                 // Subtration if user picks this number (2)
+                System.out.println("Enter two numbers for Subtraction (seperated by Space)");
+                num1 = scanner.nextInt();                                   //Selecting the first entered number
+                num2 = scanner.nextInt();                                   //Selecting the second entered number
+                result = (double)num1 - num2;                               //Converting the result into double
+                System.out.println("The result is: " + result);
+                System.out.println("Thanks for using my calculator!");  //Goodbye Text
+                break;
+
+            case 3:                                 // Multiplication if user picks this number (3)
+                System.out.println("Enter two numbers for Multiplication (seperated by Space)");
+                num1 = scanner.nextInt();                                   //Selecting the first entered number
+                num2 = scanner.nextInt();                                   //Selecting the second entered number
+                result = (double)num1 * num2;                               //Converting the result into double
+                System.out.println("The result is: " + result);
+                System.out.println("Thanks for using my calculator!)");  //Goodbye Text
+                break;
+
+            case 4:                                 // Division if user picks this number (4)
+                System.out.println("Enter two numbers for Division (seperated by Space)");
+                num1 = scanner.nextInt();                                   //Selecting the first entered number
+                num2 = scanner.nextInt();                                   //Selecting the second entered number
+                if (num2 == 0){
+                  System.out.println("Cannot divide by zero");
+                  System.out.println("Thanks for using my calculator!");  //Goodbye Text
+                    break;
+                }else {
+                    result = (double) num1 / num2;                          //Converting the result into double
+                    System.out.println("The result is: " + result);
+                    System.out.println("Thanks for using my calculator!");  //Goodbye Text
+                    break;
+                }
+            case 0:                                 // Quit if user picks this number (0)
+                System.out.println("Thanks for using my calculator!");  //Goodbye Text
+                break;
+        }
+    }
+}
