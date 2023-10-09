@@ -1,0 +1,175 @@
+/*
+ * Name: Lukas Siemers
+ * Date: 10/05/2023
+ * */
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    /*
+    Problem 1:
+    Define a method named filterABC that
+    a. Keeps prompting the user to type a string until the user types 'Done'
+    (case insensitive).
+    b. For each input string, display it back to the user if 'ABC' (all upper
+    case) is in there. Otherwise, do not display it.
+    Sample output:
+    Please type something, 'Done' to exit:
+    abcdsfa
+    Please type something, 'Done' to exit:
+    ABCdsfa
+    ABCdsfa
+    Please type something, 'Done' to exit:
+    dsfjkABdsfC
+    Please type something, 'Done' to exit:
+    dfajkAVABCjskd
+    dfajkAVABCjskd
+    Please type something, 'Done' to exit:
+    Done
+    */
+    public static void filterABC() {
+        Scanner sc = new Scanner(System.in); //System.in is a standard input stream
+        System.out.print("Enter a string: ");
+        String str_input = sc.nextLine();              //reads string
+        boolean isTrue = true;
+
+        while (isTrue) {
+            if (str_input.equals("Done")) {
+                System.out.println(str_input);
+                isTrue = false;
+            } else {
+                if (str_input.contains("ABC")) {
+                    System.out.println(str_input);
+                    new Scanner(System.in); //System.in is a standard input stream
+                    System.out.print("Enter a string: ");
+                    str_input = sc.nextLine();
+                } else {
+                    new Scanner(System.in); //System.in is a standard input stream
+                    System.out.print("Enter a string: ");
+                    str_input = sc.nextLine();
+                }
+            }
+        }
+    }
+    /*
+            Problem 2:
+            Define a method named isPalindrome that takes a string and return true if the
+            argument is a palindrome, false otherwise.
+            A palindrome is a symmetric string, namely if you reverse the string, you get
+            the same string back. For example,
+            abccba is a palindrome.
+            */
+            public static boolean isPalindrome(String input){
+                int length = input.length();
+                for (int i = 0; i < length / 2; i++) {
+                    if (input.charAt(i) != input.charAt(length - i - 1)) {
+                        System.out.println(input + " is not a palindrome");
+                        return false;
+                    }
+                }
+                System.out.println(input + " is a palindrome");
+                return true;
+            }
+
+            /*
+            Problem 3
+            Define a method named 'removeVowels' that takes a string and returns
+            another string with vowels removed.
+            Hint: use concatenation to create the new string to return.
+            Sample output:
+            removeVowels("hkaldfjsdfjeilsav") -> "hkldfjsdfjlsv"
+            */
+            public static String removeVowels(String user_input2){
+                String vowels = "[AIEOUaieou]";
+                System.out.println("Before: "+ user_input2);
+                String result = user_input2.replaceAll(vowels, "");
+                System.out.println("After: "+ result);
+                return result;
+            }
+            /*
+            Problem 4
+            Define a method named 'month' that takes an integer and returns a string that
+            represents a month.
+            If the integer is 1, return Jan. 2 -> Feb. 3 -> Mar. .... 12 -> Dec.
+            Otherwise, return "Invalid".
+            You are required to use the switch statement.
+            Sample output:
+            month(1) -> Jan.
+            month(2) -> Feb.
+            ...
+            month(12)-> Dec.
+            month(14)-> Invalid
+            */
+
+            public static String month_m(int m){
+                String month = "";
+                switch (m) {
+                    case 1:
+                        month = "January";
+                        break;
+                    case 2:
+                        month = "February";
+                        break;
+                    case 3:
+                        month = "March";
+                        break;
+                    case 4:
+                        month = "April";
+                        break;
+                    case 5:
+                        month = "May";
+                        break;
+                    case 6:
+                        month = "Juny";
+                        break;
+                    case 7:
+                        month = "July";
+                        break;
+                    case 8:
+                        month = "August";
+                        break;
+                    case 9:
+                        month = "September";
+                        break;
+                    case 10:
+                        month = "October";
+                        break;
+                    case 11:
+                        month = "November";
+                        break;
+                    case 12:
+                        month = "December";
+                        break;
+                    default:
+                        month = "Invalid";
+                        break;
+                }
+                return month;
+            }
+
+//Test removeVowels with a while loop until the user types "Done", display
+    //the string with vowels removed.
+//Use a for loop to display all the valid months using the month method.
+
+
+    public static void main(String[] args) {
+        String input = "abccba";
+        String user_input2 = "adawdejfensjendwa";
+        filterABC();
+        Scanner scanner_palindrome = new Scanner(System.in);
+        for (int i = 0; i < 3; i++) {
+            System.out.print("Enter a string: ");
+            String userInput = scanner_palindrome.nextLine();
+            isPalindrome(userInput);
+        }
+        removeVowels(user_input2);
+        for (int i = 1; i <= 12; i++) {
+            String monthName = month_m(i);
+            if (!monthName.equals("Invalid")) {
+                System.out.println("Month " + i + " -> " + monthName);
+            }
+        }
+    }
+}
