@@ -1,0 +1,121 @@
+import java.util.Arrays;
+// Lukas Siemers - Project #3 - Date: 10/04/2023
+public class Main {
+/*
+* 1. Write a method "countEven" that takes an array of integers and returns
+the number of
+even numbers in that array. Test it with the following array a and print
+the result.
+* */
+public static int countEven(int a[]){ //Method
+int count = 0; //Initialize a Counter
+for (int i = 0; i < a.length; i++){ //Initialzing a for loop with the
+length of the Array
+if (a[i] % 2 == 0){ //if the current Array Element is
+dividable by 2 without remainders then its even
+count += 1; //Add 1 to the counter
+}
+}
+return count; //Return the counter
+}
+/*
+* 2. Write a method "minMax" that takes an array of integers and returns
+a two-element
+array with the minimum number as the 1st element and the maximum number
+as the 2nd.
+Test it with the following array a and print the result.
+* */
+public static int[] minMax(int[]a){ //Method
+int min = Integer.MAX_VALUE; //Sets a Max-Value to the Min Variables
+int max = Integer.MIN_VALUE; //Sets a Min-Value to the Max Variable
+for (int k=0;k < a.length;k++){ //Initialzing a for loop with the
+length of the Array
+if (a[k] < min) { //if a[current position] is less than
+the min value
+min = a[k]; //Assign a new Min value of the
+[current position]
+}
+if (a[k] > max) { //if a[current position] is more than
+the max value
+max = a[k]; //Assign a new Max value of the
+[current position]
+}
+}
+return new int[]{min, max}; //Returning the Values
+}
+/*
+* 3. Write a method "runningSums" that takes a 1-d integer array nums
+and returns
+the running sum of nums. A running sum of an array is defined as
+runningSum[i] =
+sum(nums[0]...nums[i]).
+*/
+public static int[] runningSums(int[] a){ //Method
+int n = a.length; //Assigning the Array length to
+a variable
+int[] sums = new int[n]; //Creating an empty Array with
+the amount of length we need
+sums[0] = a[0]; //Array sums at position 0 is
+getting the value of array a at position 0
+for (int p=1;p < n;p++){ //Initializing a for loop,
+started at 1 since the 0th value has been used
+sums[p] = sums[p-1] + a[p]; //sums Array at position [p] is
+the value of position - 1 + Array a at postion [p]
+}
+return sums; //Returning the sums
+}
+/*
+* 4. Define a method "diagonalSum" that takes a square int matrix (2-D
+Array) mat,
+and returns the sum of the matrix diagonals.
+Only include the sum of all the elements on the primary diagonal and all
+the
+elements on the secondary diagonal that are not part of the primary
+diagonal.
+* */
+public static int diagonalSum(int[][] mat) { //Method
+int n = mat.length; //Assigning the length of
+the 2D Array to a Variable
+int sum = 0; //Creating a variable and
+initializing it with 0
+for (int i = 0; i < n; i++) { //For loop
+sum += mat[i][i]; //The sum is the 2D Array
+at position [i] [i]
+if (i != n - 1 - i){ //If position i is not
+equal to length - 1 - postion then
+sum += mat[i][n - 1 - i]; //The sum is 2D Array at
+first postion [i], second [length - 1 - current position]
+}
+}
+return sum; //returning the Sum
+}
+public static void main(String[] args) {
+/*
+4
+[1, 8]
+[1, 3, 6, 10, 18, 24]
+25
+8
+* */
+int[] a = {1,2,3,4,8,6}; //Array for our functions(Methods)
+System.out.println(countEven(a)); //Calling our
+Methods
+System.out.println(Arrays.toString(minMax(a))); //Calling our
+Methods
+System.out.println(Arrays.toString(runningSums(a))); //Calling our
+Methods
+int[][] mat = {{1,2,3}, //Initializing
+the 2D Array
+{4,5,6},
+{7,8,9}};
+System.out.println(diagonalSum(mat)); //Calling our
+Method
+mat = new int[][]{{1,1,1,1}, //Initializing
+the 2D array
+{1,1,1,1},
+{1,1,1,1},
+{1,1,1,1}};
+System.out.println(diagonalSum(mat)); //Calling our
+Method
+}
+}
