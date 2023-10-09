@@ -1,0 +1,117 @@
+import java.util.Random;
+//Lukas Siemers
+//Date: 10/03/2023
+//I did have some help with the second exercise since I did not understod it completly.
+public class Project3{
+    /*
+    * Define a method named "randomWalk" that simulates the following process:
+    * A drunkard begins walking aimlessly, starting at a lamp post at (0,0). At each step,
+    * the drunkard forgets where he or she is, and takes one step at random, either north,
+    * east, south, or west, with probability 25%. (You can generate a random number from
+    * the range 0-3 to simulate this. 0 for north, 1 for east, 2 for south, and 3 for west.)
+    * How far will the drunkard be from the lamp post after N steps?
+    * Print the drunkard's location each step and display the final distance of the drunkard
+    * from the lamp post.
+    * Required:
+    *   a. Use switch statement to check the direction for each step.
+    *   b. Do not return any value. Just display the steps and final distance.
+    *
+    * Following is a sample output from the method with an input of N = 10.
+
+        North:(0, 1)
+        East:(1, 1)
+        South:(1, 0)
+        North:(1, 1)
+        East:(2, 1)
+        South:(2, 0)
+        South:(2, -1)
+        North:(2, 0)
+        North:(2, 1)
+        East:(3, 1)
+        Final distance: 3.1622776601683795
+
+    * */
+    static void randomWalk(int N) {                     //Creating a Method which we can call in the Main Function (N is determined in the Function call for easier manipulation)
+
+        int north_south = 0;                             //Initialzing variables for lower use
+        int east_west = 0;                              //Initialzing variables for lower use
+
+        for (int i = 0; i < N; i++) {                  //Loop for the random numbers, (this will determine how many random numbers we will produce from the loop)
+            Random random = new Random();              //Initializing random variable
+            int direction = random.nextInt(4);  //Assigning the random variable with an Upperbound of 4 to a new variable
+
+            switch (direction) {                      //Random number which will chose the Case such as #1 = Case 1
+                case 0:
+                    north_south ++;                   //Adding 1 "Direction" to the variable
+                    System.out.println("North:(" + north_south + ", " + east_west + ")");   //Print Statement
+                    break;
+                case 1:
+                    east_west ++;               //Adding 1 "Direction" to the variable
+                    System.out.println("East:(" + north_south + ", " + east_west + ")");   //Print Statement
+                    break;
+                case 2:
+                    north_south --;               //Subtracting 1 "Direction" from the variable
+                    System.out.println("South:(" + north_south + ", " + east_west + ")");   //Print Statement
+                    break;
+                case 3:
+                    east_west --;               //Subtracting 1 "Direction" from the variable
+                    System.out.println("West:(" + north_south + ", " + east_west + ")");   //Print Statement
+                    break;
+            }
+        }
+        double Final_Distance = Math.sqrt(north_south * north_south + east_west * east_west);   //Equation to get the Final Distance
+        System.out.println("Final Distance = " + Final_Distance);                               //Printing out the Statement
+    }
+    /*
+    * Define a method named "isolatedStars" that takes a string s, where every two consecutive
+    * vertical bars '|' are grouped into a pair. In other words, the 1st and 2nd '|' make a pair,
+    * the 3rd and 4th '|' make a pair, and so forth.
+    * Return the number of '*' in s, excluding the '*' between each pair of '|'.
+    * Note that each '|' will belong to exactly one pair.
+    * Example:
+        Input: s = "h|*e*ll|o**w|*or|**ld"
+        Output: 4
+        Explanation:
+        The stars between the first and second '|' ("*e*ll") are excluded from the answer.
+        Also, the stars between the third and fourth '|' ("*or") are excluded from the answer.
+        There are 4 asterisks considered ("o**w" and "**ld"). Therefore, we return 4.
+    * */
+static int isolatedStars(String s) {    // Allowing the Input to be included in the method (returning Count which is Integer)
+    int count = 0;  // Initializing count
+    boolean inPair = false; //Boolean Variable
+
+    for (char c : s.toCharArray()) {    // For loop converted the string to character 'c'
+        if (c == '|') { // testing each "letter or symbol"
+            inPair = !inPair; // Toggle the inPair flag when encountering '|'
+        } else if (c == '*' && !inPair) {
+            count++; // Count '*' only when not inside a pair
+        }
+    }
+    return count;   //returning the counter
+}
+
+
+    public static void main(String[] args) {        //Main Function
+        //Call the randomWalk with every other number in the range (10-20) using a while loop.
+        //Namely, call it with 10, 12, 14, ... 20.
+        /*
+        int N = 10;
+        int end = 20;
+        int step = 2; // We're using every other number, so the step is 2
+        while (N <= end) {
+            randomWalk(N);
+            N += step;
+        }
+    randomWalk(N);  // Calling our Method
+        */
+        int N = 10;
+        randomWalk(N);
+        System.out.println("");
+        //Keep prompting the user to enter a string to test isolatedStars until the user types "done".
+        //Display the results from calling isolatedStars with each input.
+        String input = "h|*e*ll|o**w|*or|**ld"; // Input String
+        int result = isolatedStars(input);  //Method Call
+        System.out.println("Output: " + result);
+    }
+}
+
