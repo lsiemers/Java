@@ -1,0 +1,297 @@
+import java.util.logging.Level;
+
+// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
+// then press Enter. You can now see whitespace characters in your code.
+public class Main {
+
+/*
+Write a Java function sumArray(int[] arr) that finds the sum of all
+elements in an array? (5 points)
+ */
+    public static int sumArray(int[] arr){
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++){
+            sum += arr[i];
+        }
+        return sum;
+    }
+/*
+Create a method reverseString(String str) that reverses a given
+string? (7 points)
+ */
+    public static String reverseString(String str){
+        String reverse = " ";
+        char ch;
+        for (int k = 0; k < str.length();k++){
+            ch = str.charAt(k);
+            reverse =  ch+reverse;
+        }
+    return reverse;
+    }
+/*
+Implement a function isPrime(int num) that checks if a given number is
+prime? (6 points)
+ */
+public static boolean isPrime(int num) {
+    if (num <= 1) {
+        return false;
+    }
+    if (num <= 3) {
+        return true;
+    }
+    if (num % 2 == 0 || num % 3 == 0) {
+        return false;
+    }
+    for (int i = 5; i * i <= num; i += 6) {
+        if (num % i == 0 || num % (i + 2) == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+/*
+Write a Java function factorial(int n) that finds the factorial of a
+number using recursion? (6 points)
+ */
+    public static int factorial(int n){
+
+        if (n == 0)
+            return 1;
+        return n * factorial(n - 1);
+    }
+/*
+Create a method isPalindrome(String str) that checks if a given string
+is a palindrome? (7 points)
+ */
+    public static boolean isPalindrome(String str){
+        boolean isPali = false;
+        String reverse = "";
+        char ch;
+        for (int k = 0; k < str.length();k++) {
+            ch = str.charAt(k);
+            reverse = ch + reverse;
+        }
+        if (str.equals(reverse)){
+            isPali = true;
+        }
+        return isPali;
+    }
+/*
+Implement a class BasicOperations with methods for basic operations
+(addition, subtraction, multiplication, division) on two numbers? (7
+points)
+ */
+    int num1 = 5;
+    int num2 = 7;
+BasicOperations operations = new BasicOperations();
+    int sum = operations.add(num1, num2);
+    int difference = operations.subtract(num1, num2);
+    int product = operations.multiply(num1, num2);
+    double quotient = operations.divide(num1, num2);
+
+/*
+SINCE WE WERE ONLY ALLOWED TO UPLOAD 1 File this is the class!!!
+public class BasicOperations {
+        public int add(int num1, int num2) {
+            return num1 + num2;
+        }
+
+        public int subtract(int num1, int num2) {
+            return num1 - num2;
+        }
+
+        public int multiply(int num1, int num2) {
+            return num1 * num2;
+        }
+
+        public double divide(int num1, int num2) {
+            return (double) num1 / num2;
+        }
+}
+
+ */
+
+/*
+Write a function calculate(int num1, int num2, char operator) to
+implement a simple calculator using switch statements? (7 points)
+ */
+
+    public static int calculate(int num1, int num2, char operator){
+        int answer = 0;
+
+        switch (operator) {
+            case '+':
+                answer = num1 + num2;
+                break;
+            case '-':
+                answer = num1 - num2;
+                break;
+            case '/':
+                answer = num1 / num2;
+                break;
+            case '*':
+                answer = num1 * num2;
+                break;
+        }
+        return answer;
+    }
+/*
+Create a function findMinMax(int[] arr) that finds the largest and
+smallest elements in an array? (6 points)
+*/
+    public static int findMinMax(int[] arr){
+        int Minarr = 0;
+        int Maxarr = 0;
+
+        for (int i = 0;i < arr.length; i++){
+            if (Minarr > arr[i]){
+                Minarr = arr[i];
+            }
+            if (Maxarr < arr[i]){
+                Maxarr = arr[i];
+            }
+        }
+        System.out.println("Max is: " + Maxarr);
+        System.out.println("Min is: " + Minarr);
+
+        return Maxarr & Minarr;
+    }
+ /*
+Write a function calculateCircleArea(double radius) to calculate the
+area of a circle given its radius? (6 points)
+*/
+    public static double calcualteCircleArea(double radius){
+        double area = 0;
+        area = (radius*radius)*Math.PI;
+        return area;
+    }
+
+/*
+Write a function secondLargest(int[] arr) that finds the second
+largest element in an array? (7 points)
+*/
+    public static int secondLargest(int[] arr) {
+        int secLargest = 0;
+        int Largest = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (Largest < arr[i]) {
+                Largest = arr[i];
+            }
+            if ((secLargest < arr[i]) && (secLargest < Largest)) {
+                secLargest = arr[i];
+            }
+        }
+        return secLargest;
+
+    }
+/*
+  Implement a function countWords(String str) to count the number of
+words in a string? (7 points)
+*/
+public static int countWords(String str) {
+    String[] words = str.split(" ");
+    int wordCount = words.length;
+    return wordCount;
+}
+/*
+ Write a Java method to check whether a year (integer) entered by the
+user is a leap year or not? (6 points)
+Expected Output:
+Input a year: 2017
+false
+ */
+    public static boolean leapYear(int year){
+        boolean leap = false;
+        if (year % 4 == 0) {
+            if (year % 100 == 0) {
+                if (year % 400 == 0)
+                    leap = true;
+                else
+                    leap = false;
+            }
+            else
+                leap = true;
+        }
+        else
+            leap = false;
+        return leap;
+    }
+/*
+Write a Java method to compute the sum of digits in an integer? (6
+points)
+Test Data:
+Input an integer: 25
+Expected Output:
+The sum is 7
+ */
+    public static int sumOfDigits(int number) {
+        int sum = 0;
+        while (number != 0) {
+            sum += number % 10;
+            number /= 10;
+        }
+        return sum;
+    }
+
+/*
+Write a Java method to count the number of digits in an integer with
+the value 2. The integer may be assumed to be non-negative? (7
+points)
+Expected Output:
+Sample:
+Input: 12541
+Output: 1
+Input: 25672
+Output: 2
+Input: 9484
+Output: 0
+ */
+public static int countDigit2(int number) {
+    int count = 0;
+    while (number > 0) {
+        int digit = number % 10; // Get the last digit of the number.
+        if (digit == 2) {
+            count++; // Increment the count if the digit is 2.
+        }
+        number /= 10; // Remove the last digit from the number.
+    }
+    return count;
+}
+
+
+/*
+15. Write a Java method that accepts three integers and checks whether
+they are consecutive or not. Returns true or false? (7 points)
+Expected Output:
+Input the first number: 15
+Input the second number: 16
+Input the third number: 17
+Check whether the three said numbers are consecutive or not!true
+ */
+
+    public static boolean areConsecutiveNumbers(int num1, int num2, int num3) {
+        return (num1 + 1 == num2 && num2 + 1 == num3) || (num1 - 1 == num2 && num2 - 1 == num3);
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,4,8,6,0};
+        String str = "Lukas";
+        int num = 15;
+        System.out.println(sumArray(arr));
+        System.out.println(reverseString(str));
+        System.out.println(isPrime(num));
+        System.out.println(factorial(5));
+        System.out.println(isPalindrome("abccba"));
+        //System.out.println(new BasicOperations());
+        System.out.println(calculate(7,2,'-'));
+        System.out.println(findMinMax(arr));
+        System.out.println(calcualteCircleArea(5));
+        System.out.println(secondLargest(arr));
+        System.out.println(countWords("This Test has to many Questions"));
+        System.out.println(leapYear(2017));
+        System.out.println(sumOfDigits(25));
+        System.out.println(countDigit2(25672));
+        System.out.println(areConsecutiveNumbers(15,16,17));
+    }
+}
